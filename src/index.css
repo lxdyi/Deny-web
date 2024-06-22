@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 html {
   left: 0;
   right: 0;
@@ -11,16 +10,34 @@ html {
 
 body {
   width: 100%;
-  margin: 0; 
-  padding: 0; 
+  margin: 0;
+  padding: 0;
   overflow-x: hidden;
 }
-.abcenter{
+.abcenter {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
 }
-.back{
-  background-image: url('/src/assets/back.png');
+.back {
+  background-image: url("/src/assets/back.png");
   background-size: cover;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #03aa77;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #03aa77;
+  cursor: pointer;
 }

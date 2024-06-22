@@ -1,29 +1,58 @@
-import { useState } from "react";
+import { useState, useEffect, useContext } from "react";
 import VideoPlayer from "../Components/VideoPlayer";
-import useFetchQuranData from "../hooks/useFetchQuranData";
-import SaveIcon from "../Components/SaveIcon";
+import { AppContext } from "../Context/AppContext"; // Import AppContext
 
-const Surah = () => {
-  const {
-    data: surahData,
-    loading,
-    error,
-  } = useFetchQuranData("https://deen.somee.com/api/App/GetAllQuran");
-  const [currentPage, setCurrentPage] = useState(1);
+const MahfuzatSurah = () => {
+  const [surahData, setSurahData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [showVideo, setShowVideo] = useState(null);
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
-  const itemsPerPage = 18;
-  const totalPages = Math.ceil(surahData.length / itemsPerPage);
-  const saveUrl = "https://deen.somee.com/api/App/AddQuranToArchive";
+  const { userId } = useContext(AppContext);
 
-  const handleClick = (newPage) => {
-    setCurrentPage(newPage);
-  };
+  useEffect(() => {
+    const fetchData = async () => {
+      if (!userId) {
+        setError(new Error("User ID is undefined"));
+        setLoading(false);
+        return;
+      }
 
-  const currentItems = surahData.slice(
-    (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage
-  );
+      const encodedUserId = encodeURIComponent(userId);
+      const url = `https://deen.somee.com/api/App/GetAllSavedQuran?UniqueId=${encodedUserId}`;
+
+      try {
+        const response = await fetch(url, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+
+        if (!response.ok) {
+          const errorResponse = await response.text();
+          console.error("Failed to fetch saved Quran data:", errorResponse);
+          throw new Error(`Failed to fetch saved Quran data: ${errorResponse}`);
+        }
+
+        const data = await response.json();
+        console.log("Fetched data:", data);
+
+        if (data.message === "No Quran Found") {
+          throw new Error("No saved Quran data found for the user.");
+        }
+
+        setSurahData(data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        setError(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [userId]);
 
   const handleVideoClick = (id) => {
     const index = surahData.findIndex((surah) => surah.id === id);
@@ -33,19 +62,13 @@ const Surah = () => {
     }
   };
 
-  
-
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
   return (
     <div className="p-4 px-32 flex w-full gap-40 items-start">
-      <div
-        className={`grid gap-3 relative py-10 ${
-          showVideo ? "grid-cols-1" : "grid-cols-3"
-        }`}
-      >
-        {currentItems.map((surah, index) => (
+      <div className="grid gap-3 relative py-10 grid-cols-3">
+        {surahData.map((surah, index) => (
           <div
             key={index}
             className="flex items-center cursor-pointer rounded-xl gap-5 p-4 border shadow-lg w-[350px] h-[80px] bg-white"
@@ -53,22 +76,16 @@ const Surah = () => {
           >
             <div className="relative w-10 h-10">
               <img className="w-10 h-10" src="/src/assets/stare-2.png" alt="" />
-              <span className="absolute translate-x-[-50%] left-[50%] top-2 ">
+              <span className="absolute translate-x-[-50%] left-[50%] top-2">
                 {index + 1}
               </span>
             </div>
             <div className="flex flex-col flex-grow">
               <div className="flex justify-between font-bold mb-2">
                 <h2 className="text-gray-900 text-lg">Al-Fātiḥah</h2>
-                <div className="flex items-center">
-                  <div >
-                    <SaveIcon surahId={surah.id} apiUrl={saveUrl} />
-                  </div>
-
-                  <h2 className="text-[#03AA77] font-bold text-lg">
-                    {surah.name}
-                  </h2>
-                </div>
+                <h2 className="text-[#03AA77] font-bold text-lg">
+                  {surah.name}
+                </h2>
               </div>
               <div className="flex gap-2">
                 <div className="bg-gray-200 py-1 px-1 rounded-lg flex items-center gap-2">
@@ -105,17 +122,6 @@ const Surah = () => {
             </div>
           </div>
         ))}
-        <div className="flex justify-center mt-4 absolute translate-x-[-50%] left-[50%] -bottom-0">
-          {Array.from({ length: totalPages }, (_, index) => (
-            <button
-              key={index + 1}
-              onClick={() => handleClick(index + 1)}
-              className={`px-3 py-1 mx-2 rounded ${
-                currentPage === index + 1 ? "bg-[#03AA77]" : "bg-gray-200"
-              }`}
-            />
-          ))}
-        </div>
       </div>
       {showVideo && (
         <VideoPlayer
@@ -130,4 +136,4 @@ const Surah = () => {
   );
 };
 
-export default Surah;
+export default MahfuzatSurah;

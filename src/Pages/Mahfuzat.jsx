@@ -4,6 +4,8 @@ const Mahfuzat = () => {
   return (
     <div className="p-4 px-32 ">
       <h3 className=" text-right font-[900] text-4xl mb-5">المحفوظات</h3>
+
+
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
         {mahfuza.map((surah, index) => (
           <div
@@ -56,6 +58,14 @@ const Mahfuzat = () => {
             </div>
           </div>
         ))}
+      </div>
+            <div className="mb-5">
+            Sure, here is the MP4 video you provided:
+
+<video width="640" height="480" controls>
+  <source src="/mnt/data/d0316c47-6979-4270-8fe9-a9f81fabf406_IMG_9386.MP4" type="video/mp4"/>
+  Your browser does not support the video tag.
+</video>
       </div>
     </div>
   );

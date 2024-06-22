@@ -1,7 +1,11 @@
 import { FaSearch } from "react-icons/fa";
 import { NavLink, useLocation } from "react-router-dom";
 import Avatare from "./Avatar";
-const Navbar = () => {
+
+// Define the navigation links as an array of objects
+
+
+const Navbar = ({navLinks}) => {
   const location = useLocation();
   const isActive = (path) => location.pathname === path;
 
@@ -37,28 +41,20 @@ const Navbar = () => {
         </li>
       </ul>
       <div className="flex items-center gap-7 pt-7">
-        <NavLink
-          to="/adhdhkar"
-          className={`flex items-center gap-3 py-2 px-2 rounded-xl ${
-            isActive("/adhdhkar")
-              ? "bg-[#FBE09C] text-[#03AA77] border-none"
-              : "text-[#C2C2C2] border-[1px] border-solid border-[#C2C2C2]"
-          }`}
-        >
-          <img src="/src/assets/book.png" alt="icon" />
-          <p>اذكار الصباح والمساء</p>
-        </NavLink>
-        <NavLink
-          to="/"
-          className={`flex items-center gap-3 py-2 px-2 rounded-xl ${
-            isActive("/")
-              ? "bg-[#FBE09C] text-[#03AA77] border-none"
-              : "text-[#C2C2C2] border-[1px] border-solid border-[#C2C2C2]"
-          }`}
-        >
-          <img src="/src/assets/Stare.png" alt="icon" />
-          <p>السور</p>
-        </NavLink>
+        {navLinks.map((link) => (
+          <NavLink
+            to={link.path}
+            key={link.path} // Use the path as a unique key for each link
+            className={`flex items-center gap-3 py-2 px-2 rounded-xl ${
+              isActive(link.path)
+                ? "bg-[#FBE09C] text-[#03AA77] border-none"
+                : "text-[#C2C2C2] border-[1px] border-solid border-[#C2C2C2]"
+            }`}
+          >
+            <img src={link.icon} alt="icon" />
+            <p>{link.label}</p>
+          </NavLink>
+        ))}
       </div>
       <div className=" absolute right-32 top-10">
         <Avatare />

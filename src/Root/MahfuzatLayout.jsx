@@ -3,13 +3,13 @@ import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
 const navLinks = [
   {
-    path: "/adhdhkar",
+    path: "mahfuzatAdhdkar",
     label: "اذكار",
     icon: "/src/assets/book.png",
   },
-  { path: "/", label: "السور", icon: "/src/assets/Stare.png" },
+  { path: "/mahfuzat", label: "السور", icon: "/src/assets/Stare.png" },
 ];
-const RootLayout = () => {
+const MahfuzatLayout = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar navLinks={navLinks} />
@@ -21,4 +21,4 @@ const RootLayout = () => {
   );
 };
 
-export default RootLayout;
+export default MahfuzatLayout;
