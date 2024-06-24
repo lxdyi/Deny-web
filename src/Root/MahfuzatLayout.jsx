@@ -13,6 +13,7 @@ const MahfuzatLayout = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar navLinks={navLinks} />
+      <h2 className=" font-bold text-[22px] text-center ml-[600px] mt-5">المحفوظات</h2>
       <div className="flex-1">
         <Outlet />
       </div>

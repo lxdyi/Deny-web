@@ -1,6 +1,9 @@
-import { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import axios from "axios";
 import VideoPlayer from "../Components/VideoPlayer";
-import { AppContext } from "../Context/AppContext"; // Import AppContext
+import { AppContext } from "../Context/AppContext";
+
+const url = `https://deen.somee.com/api/App/GetAllSavedQuran`;
 
 const MahfuzatSurah = () => {
   const [surahData, setSurahData] = useState([]);
@@ -11,47 +14,29 @@ const MahfuzatSurah = () => {
   const { userId } = useContext(AppContext);
 
   useEffect(() => {
-    const fetchData = async () => {
-      if (!userId) {
-        setError(new Error("User ID is undefined"));
-        setLoading(false);
-        return;
-      }
-
-      const encodedUserId = encodeURIComponent(userId);
-      const url = `https://deen.somee.com/api/App/GetAllSavedQuran?UniqueId=${encodedUserId}`;
-
+    const fetchSurahData = async () => {
+      setLoading(true);
       try {
-        const response = await fetch(url, {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
+        if (!userId) {
+          throw new Error("User ID is missing or invalid.");
+        }
+        const response = await axios.get(url, {
+          params: {
+            UniqueId: userId,
           },
         });
-
-        if (!response.ok) {
-          const errorResponse = await response.text();
-          console.error("Failed to fetch saved Quran data:", errorResponse);
-          throw new Error(`Failed to fetch saved Quran data: ${errorResponse}`);
-        }
-
-        const data = await response.json();
-        console.log("Fetched data:", data);
-
-        if (data.message === "No Quran Found") {
-          throw new Error("No saved Quran data found for the user.");
-        }
-
-        setSurahData(data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-        setError(error);
-      } finally {
+        setSurahData(response.data);
         setLoading(false);
+      } catch (error) {
+        setError(error);
+        setLoading(false);
+        console.error("Error fetching Quran data:", error);
       }
     };
 
-    fetchData();
+    if (userId) {
+      fetchSurahData();
+    }
   }, [userId]);
 
   const handleVideoClick = (id) => {
@@ -62,12 +47,15 @@ const MahfuzatSurah = () => {
     }
   };
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
+  if (error) return <h3>You have not saved anything.</h3>;
 
   return (
     <div className="p-4 px-32 flex w-full gap-40 items-start">
-      <div className="grid gap-3 relative py-10 grid-cols-3">
+      <div
+        className={`grid gap-3 relative py-10 ${
+          showVideo ? "grid-cols-1" : "grid-cols-3"
+        }`}
+      >
         {surahData.map((surah, index) => (
           <div
             key={index}

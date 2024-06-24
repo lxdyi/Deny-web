@@ -5,7 +5,7 @@ export const Surahs = [
     aya: 7,
     rank: 1,
     place: "مكية",
-    time: 3
+    time: 3,
   },
   {
     eng: "Al-Fātiḥah",
@@ -13,7 +13,7 @@ export const Surahs = [
     aya: 3,
     rank: 1,
     place: "مكية",
-    time: 3
+    time: 3,
   },
   {
     eng: "Al-Fātiḥah",
@@ -21,7 +21,7 @@ export const Surahs = [
     aya: 3,
     rank: 1,
     place: "مكية",
-    time: 3
+    time: 3,
   },
   {
     eng: "Al-Fātiḥah",
@@ -29,7 +29,7 @@ export const Surahs = [
     aya: 3,
     rank: 1,
     place: "مكية",
-    time: 3
+    time: 3,
   },
   {
     eng: "Al-Fātiḥah",
@@ -37,7 +37,7 @@ export const Surahs = [
     aya: 3,
     rank: 1,
     place: "مكية",
-    time: 3
+    time: 3,
   },
   {
     eng: "Al-Fātiḥah",
@@ -45,7 +45,7 @@ export const Surahs = [
     aya: 3,
     rank: 1,
     place: "مكية",
-    time: 3
+    time: 3,
   },
   {
     eng: "Al-Fātiḥah",
@@ -61,7 +61,7 @@ export const Surahs = [
     aya: 3,
     rank: 1,
     place: "مكية",
-    time: 3
+    time: 3,
   },
   {
     eng: "Al-Fātiḥah",
@@ -69,7 +69,7 @@ export const Surahs = [
     aya: 3,
     rank: 1,
     place: "مكية",
-    time: 3
+    time: 3,
   },
   {
     eng: "Al-Fātiḥah",
@@ -77,7 +77,7 @@ export const Surahs = [
     aya: 3,
     rank: 1,
     place: "مكية",
-    time: 3
+    time: 3,
   },
   {
     eng: "Al-Fātiḥah",
@@ -85,7 +85,7 @@ export const Surahs = [
     aya: 3,
     rank: 1,
     place: "مكية",
-    time: 3
+    time: 3,
   },
   {
     eng: "Al-Fātiḥah",
@@ -93,7 +93,7 @@ export const Surahs = [
     aya: 3,
     rank: 1,
     place: "مكية",
-    time: 3
+    time: 3,
   },
   {
     eng: "Al-Fātiḥah",
@@ -109,7 +109,7 @@ export const Surahs = [
     aya: 3,
     rank: 1,
     place: "مكية",
-    time: 3
+    time: 3,
   },
   {
     eng: "Al-Fātiḥah",
@@ -117,7 +117,7 @@ export const Surahs = [
     aya: 3,
     rank: 1,
     place: "مكية",
-    time: 3
+    time: 3,
   },
   {
     eng: "Al-Fātiḥah",
@@ -125,7 +125,7 @@ export const Surahs = [
     aya: 3,
     rank: 1,
     place: "مكية",
-    time: 3
+    time: 3,
   },
   {
     eng: "Al-Fātiḥah",
@@ -133,7 +133,7 @@ export const Surahs = [
     aya: 3,
     rank: 1,
     place: "مكية",
-    time: 3
+    time: 3,
   },
   {
     eng: "Al-Fātiḥah",
@@ -141,7 +141,7 @@ export const Surahs = [
     aya: 3,
     rank: 1,
     place: "مكية",
-    time: 3
+    time: 3,
   },
   {
     eng: "Al-Fātiḥah",
@@ -157,7 +157,7 @@ export const Surahs = [
     aya: 3,
     rank: 1,
     place: "مكية",
-    time: 3
+    time: 3,
   },
   {
     eng: "Al-Fātiḥah",
@@ -165,7 +165,7 @@ export const Surahs = [
     aya: 3,
     rank: 1,
     place: "مكية",
-    time: 3
+    time: 3,
   },
   {
     eng: "Al-Fātiḥah",
@@ -173,7 +173,7 @@ export const Surahs = [
     aya: 3,
     rank: 1,
     place: "مكية",
-    time: 3
+    time: 3,
   },
   {
     eng: "Al-Fātiḥah",
@@ -181,7 +181,7 @@ export const Surahs = [
     aya: 3,
     rank: 1,
     place: "مكية",
-    time: 3
+    time: 3,
   },
   {
     eng: "Al-Fātiḥah",
@@ -189,19 +189,22 @@ export const Surahs = [
     aya: 3,
     rank: 1,
     place: "مكية",
-    time: 3
+    time: 3,
   },
 ];
 
 export const adhdhkar = [
   {
     name: "اذكار النوم",
+    id: 18,
   },
   {
     name: "اذكار المساء",
+    id: 26,
   },
   {
     name: "اذكار الصباح",
+    id: 4,
   },
 ];
 export const mahfuza = [
@@ -211,7 +214,7 @@ export const mahfuza = [
     aya: 7,
     rank: 1,
     place: "مكية",
-    time: 3
+    time: 3,
   },
   {
     eng: "Al-Fātiḥah",
@@ -219,7 +222,7 @@ export const mahfuza = [
     aya: 3,
     rank: 1,
     place: "مكية",
-    time: 3
+    time: 3,
   },
   {
     eng: "Al-Fātiḥah",
@@ -227,7 +230,7 @@ export const mahfuza = [
     aya: 3,
     rank: 1,
     place: "مكية",
-    time: 3
+    time: 3,
   },
   {
     eng: "Al-Fātiḥah",
@@ -235,7 +238,7 @@ export const mahfuza = [
     aya: 7,
     rank: 1,
     place: "مكية",
-    time: 3
+    time: 3,
   },
   {
     eng: "Al-Fātiḥah",
@@ -243,7 +246,7 @@ export const mahfuza = [
     aya: 3,
     rank: 1,
     place: "مكية",
-    time: 3
+    time: 3,
   },
   {
     eng: "Al-Fātiḥah",
@@ -251,7 +254,7 @@ export const mahfuza = [
     aya: 3,
     rank: 1,
     place: "مكية",
-    time: 3
+    time: 3,
   },
   {
     eng: "Al-Fātiḥah",
@@ -259,7 +262,7 @@ export const mahfuza = [
     aya: 7,
     rank: 1,
     place: "مكية",
-    time: 3
+    time: 3,
   },
   {
     eng: "Al-Fātiḥah",
@@ -267,7 +270,7 @@ export const mahfuza = [
     aya: 3,
     rank: 1,
     place: "مكية",
-    time: 3
+    time: 3,
   },
   {
     eng: "Al-Fātiḥah",
@@ -275,7 +278,7 @@ export const mahfuza = [
     aya: 3,
     rank: 1,
     place: "مكية",
-    time: 3
+    time: 3,
   },
   {
     eng: "Al-Fātiḥah",
@@ -283,7 +286,7 @@ export const mahfuza = [
     aya: 7,
     rank: 1,
     place: "مكية",
-    time: 3
+    time: 3,
   },
   {
     eng: "Al-Fātiḥah",
@@ -291,7 +294,7 @@ export const mahfuza = [
     aya: 3,
     rank: 1,
     place: "مكية",
-    time: 3
+    time: 3,
   },
   {
     eng: "Al-Fātiḥah",
@@ -299,6 +302,6 @@ export const mahfuza = [
     aya: 3,
     rank: 1,
     place: "مكية",
-    time: 3
+    time: 3,
   },
 ];

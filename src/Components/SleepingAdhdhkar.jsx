@@ -10,7 +10,7 @@ const SleepingAdhdhkar = () => {
     "https://deen.somee.com/api/Dashboard/GetAllAthkarSleeping"
   );
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
+  console.log(adhdhkarData)
   const videoBaseUrl = "https://deen.somee.com/files/";
 
   const handlePrevious = () => {

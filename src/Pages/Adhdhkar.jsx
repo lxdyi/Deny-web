@@ -57,7 +57,7 @@ const Adhdhkar = () => {
               </div>
               <div className="flex items-center">
                 <div>
-                  <SaveAdhdhkar />
+                  <SaveAdhdhkar adhdhkarid={adhdhkarItem.id} />
                 </div>
                 <h2 className="text-[#03AA77] font-bold text-lg ">
                   {adhdhkarItem.name}

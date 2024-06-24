@@ -33,8 +33,6 @@ const Surah = () => {
     }
   };
 
-  
-
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
@@ -57,18 +55,16 @@ const Surah = () => {
                 {index + 1}
               </span>
             </div>
-            <div className="flex flex-col flex-grow">
-              <div className="flex justify-between font-bold mb-2">
+            <div className="flex flex-col flex-grow relative">
+              <div className="flex justify-between items-center font-bold mb-2">
                 <h2 className="text-gray-900 text-lg">Al-Fātiḥah</h2>
-                <div className="flex items-center">
-                  <div >
-                    <SaveIcon surahId={surah.id} apiUrl={saveUrl} />
-                  </div>
 
-                  <h2 className="text-[#03AA77] font-bold text-lg">
-                    {surah.name}
-                  </h2>
+                <div className=" absolute right-24">
+                  <SaveIcon surahId={surah.id} apiUrl={saveUrl} />
                 </div>
+                <h2 className="text-[#03AA77] font-bold text-lg">
+                  {surah.name}
+                </h2>
               </div>
               <div className="flex gap-2">
                 <div className="bg-gray-200 py-1 px-1 rounded-lg flex items-center gap-2">
