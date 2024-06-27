@@ -1,18 +1,20 @@
 import { FaSearch } from "react-icons/fa";
 import { NavLink, useLocation } from "react-router-dom";
-import Avatare from "./Avatar";
-
+import { Link } from "react-router-dom";
 // Define the navigation links as an array of objects
 
-
-const Navbar = ({navLinks}) => {
+const Navbar = ({ navLinks }) => {
   const location = useLocation();
   const isActive = (path) => location.pathname === path;
 
   return (
     <div className="flex justify-center flex-col items-center pt-10 relative">
       <div>
-        <img className="w-[120px] md:w-[120px] " src="/src/assets/Logo.png" alt="logo" />
+        <img
+          className="w-[120px] md:w-[200px] "
+          src="/src/assets/Logo.png"
+          alt="logo"
+        />
       </div>
       <div className="relative">
         <input
@@ -57,7 +59,9 @@ const Navbar = ({navLinks}) => {
         ))}
       </div>
       <div className=" absolute right-4 lg:right-32 top-10">
-        <Avatare />
+        <Link to={"mahfuzat"}>
+          <p className="text-left font-extrabold">المحفوظات</p>
+        </Link>
       </div>
     </div>
   );
