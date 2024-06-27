@@ -28,19 +28,21 @@ const Adhdhkar = () => {
 
   return (
     <div
-      className={`p-4 px-32 mt-5 ${
-        showAdhdhkar && "flex w-full gap-40 items-start"
-      }`}
+      className={`p-4 px-4 lg:px-20 xl:px-32 justify-center flex flex-col ${
+        showAdhdhkar && "xl:flex-row items-start"
+      }  w-full gap-40  `}
     >
       <div
-        className={` grid gap-3 relative py-10 ${
-          showAdhdhkar ? "grid-cols-1" : "grid-cols-3"
+        className={`gap-3 relative py-10 ${
+          showAdhdhkar
+            ? "flex flex-row lg:flex-row overflow-x-auto xl:overflow-x-visible xl:grid w-[100%]"
+            : "grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3"
         }`}
       >
         {adhdhkar.map((adhdhkarItem, index) => (
           <div
             key={index}
-            className="flex items-center rounded-xl gap-5 p-4 border shadow-lg w-[350px] h-[80px] bg-white cursor-pointer"
+            className="flex items-center rounded-xl gap-5 p-4 border shadow-lg max-w-[360px] min-w-[350px] h-[80px] bg-white cursor-pointer"
             onClick={() => {
               handleAdhdhkarClick(index);
               setShowAdhdhkar(true);
@@ -68,7 +70,7 @@ const Adhdhkar = () => {
         ))}
       </div>
 
-      <div className="mt-5">
+      <div className="mt-5 flex justify-center w-full">
         {selectedAdhdhkar === "sleeping" && <SleepingAdhdhkar />}
         {selectedAdhdhkar === "evening" && <EveningAdhdhkar />}
         {selectedAdhdhkar === "morning" && <MoringAdhdhkar />}

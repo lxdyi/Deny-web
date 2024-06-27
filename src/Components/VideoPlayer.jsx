@@ -95,11 +95,11 @@ const VideoPlayer = ({
   };
 
   return (
-    <div className="w-full max-w-5xl mx-auto mt-8">
+    <div className="w-full max-w-5xl mx-auto mt-8 flex justify-center">
       {showVideo && (
-        <div className="flex flex-col items-center">
-          <div className="w-full max-w-[700px]">
-            <div className=" bg-white w-[700px] h-[600px] shadow-xl">
+        <div className="flex flex-col items-center justify-center">
+          <div className="w-full max-w-[700px] ">
+            <div className=" bg-white w-[350px] lg:w-[500px] xl:w-[700px] h-[600px]  shadow-xl">
               <video
                 ref={videoRef}
                 src={`${videoBaseUrl}${showVideo}`}
@@ -118,7 +118,7 @@ const VideoPlayer = ({
               onMouseDown={handleSeekMouseDown}
               onChange={handleSeek}
               onMouseUp={handleSeekMouseUp}
-              className="slider w-full appearance-none bg-transparent h-[10px] rounded-full outline-none"
+              className="slider  w-[350px] lg:w-[500px] xl:w-[700px] appearance-none bg-transparent h-[10px] rounded-full outline-none"
               style={{
                 background: `linear-gradient(to right, #03AA77 0%, #03AA77 ${
                   played * 100

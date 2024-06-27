@@ -34,7 +34,7 @@ const MoringAdhdhkar = () => {
   return (
     <div>
       {currentImage && (
-        <div className=" bg-white w-[600px] h-[600px] shadow-xl flex justify-center items-center">
+        <div className=" bg-white  w-[380px] h-[380px] sm:w-[600px] sm:h-[600px] shadow-xl flex justify-center items-center">
           <img src={`${videoBaseUrl}${currentImage.file}`} alt="" />
         </div>
       )}

@@ -41,3 +41,17 @@ body {
   background-color: #03aa77;
   cursor: pointer;
 }
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #03aa77;
+  border-radius: 20px;
+}
+
+::-moz-scrollbar-thumb {
+  background-color: #03aa77;
+
+}

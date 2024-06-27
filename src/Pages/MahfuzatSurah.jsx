@@ -50,16 +50,22 @@ const MahfuzatSurah = () => {
   if (error) return <h3>You have not saved anything.</h3>;
 
   return (
-    <div className="p-4 px-32 flex w-full gap-40 items-start">
+    <div
+      className={`p-4 px-4 lg:px-20 xl:px-32 justify-center flex flex-col ${
+        showVideo && "xl:flex-row items-start"
+      }  w-full gap-20 xl:gap-40  `}
+    >
       <div
-        className={`grid gap-3 relative py-10 ${
-          showVideo ? "grid-cols-1" : "grid-cols-3"
+        className={`gap-3 relative py-10 ${
+          showVideo
+            ? "flex flex-row lg:flex-row overflow-x-auto xl:overflow-x-visible xl:grid w-[100%]"
+            : "grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3"
         }`}
       >
         {surahData.map((surah, index) => (
           <div
             key={index}
-            className="flex items-center cursor-pointer rounded-xl gap-5 p-4 border shadow-lg w-[350px] h-[80px] bg-white"
+            className="flex items-center cursor-pointer rounded-xl gap-5 p-4 border shadow-lg max-w-[360px] min-w-[350px] h-[80px] bg-white"
             onClick={() => handleVideoClick(surah.id)}
           >
             <div className="relative w-10 h-10">

@@ -12,14 +12,14 @@ const Navbar = ({navLinks}) => {
   return (
     <div className="flex justify-center flex-col items-center pt-10 relative">
       <div>
-        <img src="/src/assets/Logo.png" alt="logo" />
+        <img className="w-[120px] md:w-[120px] " src="/src/assets/Logo.png" alt="logo" />
       </div>
       <div className="relative">
         <input
           type="text"
           placeholder="ابحث هنا"
           dir="rtl"
-          className="shadow-lg w-[500px] py-4 pl-10 pr-4 rounded-xl focus:outline-none"
+          className="shadow-lg w-[350px] md:w-[500px] py-4 pl-10 pr-4 rounded-xl focus:outline-none"
         />
         <FaSearch className="absolute left-3 top-[60%] transform -translate-y-1/2 text-[#03AA77]" />
       </div>
@@ -56,7 +56,7 @@ const Navbar = ({navLinks}) => {
           </NavLink>
         ))}
       </div>
-      <div className=" absolute right-32 top-10">
+      <div className=" absolute right-4 lg:right-32 top-10">
         <Avatare />
       </div>
     </div>
