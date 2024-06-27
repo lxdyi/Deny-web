@@ -67,34 +67,24 @@ const Surah = () => {
                 </h2>
               </div>
               <div className="flex gap-2">
-                <div className="bg-gray-200 py-1 px-1 rounded-lg flex items-center gap-2">
-                  <img
-                    src="/src/assets/video.png"
-                    alt="icon"
-                    className="w-4 h-4"
-                  />
-                  <p dir="rtl" className="text-gray-700 text-sm">
-                    3 دقائق
-                  </p>
-                </div>
-                <div className="bg-gray-200 py-1 px-1 rounded-lg flex items-center gap-2">
+                <div className="bg-gray-200 py-1 px-2 rounded-lg flex items-center gap-3">
                   <img
                     src="/src/assets/kab.png"
                     alt="icon"
                     className="w-4 h-4"
                   />
                   <p dir="rtl" className="text-gray-700 text-sm">
-                    مكية
+                    {surah.type === "Makiya" ? "مكية" : "مدنية"}
                   </p>
                 </div>
-                <div className="bg-gray-200 py-1 px-1 rounded-lg flex items-center gap-2">
+                <div className="bg-gray-200 py-1 px-2 rounded-lg flex items-center gap-2">
                   <img
                     src="/src/assets/book.png"
                     alt="icon"
                     className="w-4 h-4"
                   />
                   <p dir="rtl" className="text-gray-700 text-sm">
-                    7 ايات
+                    {surah.ayatNum}
                   </p>
                 </div>
               </div>
