@@ -1,9 +1,12 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
+import { useOutletContext } from "react-router-dom";
 import VideoPlayer from "../Components/VideoPlayer";
 import useFetchQuranData from "../hooks/useFetchQuranData";
 import SaveIcon from "../Components/SaveIcon";
 
 const Surah = () => {
+  const { searchQuery } = useOutletContext();
   const {
     data: surahData,
     loading,
@@ -13,14 +16,24 @@ const Surah = () => {
   const [showVideo, setShowVideo] = useState(null);
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
   const itemsPerPage = 18;
-  const totalPages = Math.ceil(surahData.length / itemsPerPage);
   const saveUrl = "https://deen.somee.com/api/App/AddQuranToArchive";
+  const removeDiacritics = (text) => {
+    return text.normalize("NFD").replace(/[\u064B-\u0652\u0670\u0640]/g, ""); // Remove Arabic diacritics
+  };
+  const filteredSurahData = surahData.filter((surah) =>
+    removeDiacritics(searchQuery.toLowerCase())
+      .split(" ")
+      .every((word) =>
+        removeDiacritics(surah.name.toLowerCase()).includes(word)
+      )
+  );
+  const totalPages = Math.ceil(filteredSurahData.length / itemsPerPage);
 
   const handleClick = (newPage) => {
     setCurrentPage(newPage);
   };
 
-  const currentItems = surahData.slice(
+  const currentItems = filteredSurahData.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
@@ -40,7 +53,7 @@ const Surah = () => {
     <div
       className={`p-4 px-4 lg:px-20 xl:px-32 justify-center flex flex-col ${
         showVideo && "xl:flex-row items-start"
-      }  w-full gap-40  `}
+      } w-full gap-40`}
     >
       <div
         className={`gap-3 relative py-10 ${
@@ -52,20 +65,19 @@ const Surah = () => {
         {currentItems.map((surah, index) => (
           <div
             key={index}
-            className="flex items-center cursor-pointer rounded-xl gap-5 p-4 border shadow-lg max-w-[360px]  min-w-[350px] h-[80px] bg-white"
+            className="flex items-center cursor-pointer rounded-xl gap-5 p-4 border shadow-lg max-w-[360px] min-w-[350px] h-[80px] bg-white"
             onClick={() => handleVideoClick(surah.id)}
           >
             <div className="relative w-10 h-10">
               <img className="w-10 h-10" src="/src/assets/stare-2.png" alt="" />
-              <span className="absolute translate-x-[-50%] left-[50%] top-2 ">
+              <span className="absolute translate-x-[-50%] left-[50%] top-2">
                 {index + 1}
               </span>
             </div>
             <div className="flex flex-col flex-grow relative">
               <div className="flex justify-between items-center font-bold mb-2">
                 <h2 className="text-gray-900 text-lg">Al-Fātiḥah</h2>
-
-                <div className=" absolute right-24">
+                <div className="absolute right-24">
                   <SaveIcon surahId={surah.id} apiUrl={saveUrl} />
                 </div>
                 <h2 className="text-[#03AA77] font-bold text-lg">

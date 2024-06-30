@@ -1,17 +1,34 @@
-import { FaSearch } from "react-icons/fa";
+import { useState } from "react";
+import { FaSearch, FaTimes } from "react-icons/fa"; // Importing FaTimes icon for the clear button
 import { NavLink, useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
-// Define the navigation links as an array of objects
 
-const Navbar = ({ navLinks }) => {
+const Navbar = ({ navLinks, onSearch }) => {
   const location = useLocation();
   const isActive = (path) => location.pathname === path;
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const handleSearchChange = (e) => {
+    const value = e.target.value;
+    setSearchTerm(value);
+    onSearch(value);
+  };
+
+  const handleLiClick = (text) => {
+    setSearchTerm(text);
+    onSearch(text);
+  };
+
+  const clearSearch = () => {
+    setSearchTerm("");
+    onSearch("");
+  };
 
   return (
     <div className="flex justify-center flex-col items-center pt-10 relative">
       <div>
         <img
-          className="w-[120px] md:w-[200px] "
+          className="w-[120px] md:w-[200px]"
           src="/src/assets/Logo.png"
           alt="logo"
         />
@@ -21,32 +38,40 @@ const Navbar = ({ navLinks }) => {
           type="text"
           placeholder="ابحث هنا"
           dir="rtl"
-          className="shadow-lg w-[350px] md:w-[500px] py-4 pl-10 pr-4 rounded-xl focus:outline-none"
+          className="shadow-lg w-[350px] md:w-[500px] py-4 pl-10 pr-10 rounded-xl focus:outline-none"
+          value={searchTerm}
+          onChange={handleSearchChange}
         />
         <FaSearch className="absolute left-3 top-[60%] transform -translate-y-1/2 text-[#03AA77]" />
+        {searchTerm && (
+          <FaTimes
+            className="absolute right-3 top-[55%] transform -translate-y-1/2 text-[#03AA77] cursor-pointer"
+            onClick={clearSearch}
+          />
+        )}
       </div>
       <ul className="flex items-center gap-3 list-none pt-8">
-        <li className="bg-[#00000014] py-1 px-2 rounded-full text-[#525252]">
-          الكهف
-        </li>
-        <li className="bg-[#00000014] py-1 px-2 rounded-full text-[#525252]">
-          الرحمان
-        </li>
-        <li className="bg-[#00000014] py-1 px-2 rounded-full text-[#525252]">
-          تبارك
-        </li>
-        <li className="bg-[#00000014] py-1 px-2 rounded-full text-[#525252]">
-          الانسان
-        </li>
-        <li className="bg-[#00000014] py-1 px-2 rounded-full text-[#525252]">
-          البقرة
-        </li>
+        {[
+          " الكَوثَرَ",
+          " الفَلَقِ",
+          " الإِخْلَاصِ",
+          " الكَافِرُونَ",
+          " قُرَيْشٍ",
+        ].map((text) => (
+          <li
+            key={text}
+            className="bg-[#00000014] py-1 px-2 rounded-full text-[#525252] cursor-pointer"
+            onClick={() => handleLiClick(text)}
+          >
+            {text}
+          </li>
+        ))}
       </ul>
       <div className="flex items-center gap-7 pt-7">
         {navLinks.map((link) => (
           <NavLink
             to={link.path}
-            key={link.path} // Use the path as a unique key for each link
+            key={link.path}
             className={`flex items-center gap-3 py-2 px-2 rounded-xl ${
               isActive(link.path)
                 ? "bg-[#FBE09C] text-[#03AA77] border-none"
@@ -58,7 +83,7 @@ const Navbar = ({ navLinks }) => {
           </NavLink>
         ))}
       </div>
-      <div className=" absolute right-4 lg:right-32 top-10">
+      <div className="absolute right-4 lg:right-32 top-10">
         <Link to={"mahfuzat"}>
           <p className="text-left font-extrabold">المحفوظات</p>
         </Link>
