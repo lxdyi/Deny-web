@@ -4,7 +4,7 @@ import { useOutletContext } from "react-router-dom";
 import VideoPlayer from "../Components/VideoPlayer";
 import useFetchQuranData from "../hooks/useFetchQuranData";
 import SaveIcon from "../Components/SaveIcon";
-
+import CircularProgress from "@mui/material/CircularProgress";
 const Surah = () => {
   const { searchQuery } = useOutletContext();
   const {
@@ -46,7 +46,14 @@ const Surah = () => {
     }
   };
 
-  if (loading) return <p>Loading...</p>;
+  if (loading)
+    return (
+      <p>
+        <div className=" absolute left-[50%] top-[70%] translate-x-[-50%] translate-y-[-50%]">
+          <CircularProgress color="success" />
+        </div>
+      </p>
+    );
   if (error) return <p>Error: {error.message}</p>;
 
   return (

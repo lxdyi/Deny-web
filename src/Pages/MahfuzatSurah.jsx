@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import VideoPlayer from "../Components/VideoPlayer";
 import { AppContext } from "../Context/AppContext";
-
+import CircularProgress from "@mui/material/CircularProgress";
 const url = `https://deen.somee.com/api/App/GetAllSavedQuran`;
 
 const MahfuzatSurah = () => {
@@ -38,7 +38,14 @@ const MahfuzatSurah = () => {
       fetchSurahData();
     }
   }, [userId]);
-
+  if (loading)
+    return (
+      <p>
+        <div className=" absolute left-[50%] top-[70%] translate-x-[-50%] translate-y-[-50%]">
+          <CircularProgress color="success" />
+        </div>
+      </p>
+    );
   const handleVideoClick = (id) => {
     const index = surahData.findIndex((surah) => surah.id === id);
     if (index !== -1) {
