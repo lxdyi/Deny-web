@@ -3,7 +3,7 @@ const Footer = () => {
     <div className=" bg-[#03AA77] py-5 sm:px-10 md:px-16 lg:px-24 xl:px-32">
       <div className="flex items-center flex-col sm:flex-row gap-5 justify-between max-w-screen-xl mx-auto">
         <p className="text-[14px] sm:text-[16px]  text-white">
-          © 2024 LXDYI Software , All Rights Reserved.
+          All Right reserved to LXDYI
         </p>
         <ul className="flex items-center gap-3">
           <li>
