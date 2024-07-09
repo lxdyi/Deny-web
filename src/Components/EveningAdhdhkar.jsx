@@ -7,11 +7,11 @@ const EveningAdhdhkar = () => {
     loading,
     error,
   } = useFetchQuranData(
-    "https://deen.somee.com/api/Dashboard/GetAllAthkarEvening"
+    "http://quranapp.somee.com/api/Dashboard/GetAllAthkarEvening"
   );
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  const videoBaseUrl = "https://deen.somee.com/files/";
+  const videoBaseUrl = "http://quranapp.somee.com/files/";
   const handlePrevious = () => {
     setCurrentImageIndex((prevIndex) =>
       prevIndex === 0 ? adhdhkarData.length - 1 : prevIndex - 1

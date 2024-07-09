@@ -1,13 +1,23 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import MoringAdhdhkar from "../Components/MoringAdhdhkar";
 import EveningAdhdhkar from "../Components/EveningAdhdhkar";
 import SleepingAdhdhkar from "../Components/SleepingAdhdhkar";
-import { adhdhkar } from "../Constant/Index";
 import SaveAdhdhkar from "../Components/SaveAdhdhkar";
+import getUpdatedAdhdhkar from "../Constant/fetchAdhdhkar";
 
 const Adhdhkar = () => {
   const [selectedAdhdhkar, setSelectedAdhdhkar] = useState(null);
   const [showAdhdhkar, setShowAdhdhkar] = useState(false);
+  const [adhdhkarList, setAdhdhkarList] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const updatedAdhdhkar = await getUpdatedAdhdhkar();
+      setAdhdhkarList(updatedAdhdhkar);
+    };
+
+    fetchData();
+  }, []);
 
   const handleAdhdhkarClick = (index) => {
     switch (index) {
@@ -30,7 +40,7 @@ const Adhdhkar = () => {
     <div
       className={`p-4 px-4 lg:px-20 xl:px-32 justify-center flex flex-col ${
         showAdhdhkar && "xl:flex-row items-start"
-      }  w-full gap-40  `}
+      } w-full gap-40`}
     >
       <div
         className={`gap-3 relative py-10 ${
@@ -39,7 +49,7 @@ const Adhdhkar = () => {
             : "grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3"
         }`}
       >
-        {adhdhkar.map((adhdhkarItem, index) => (
+        {adhdhkarList.map((adhdhkarItem, index) => (
           <div
             key={index}
             className="flex items-center rounded-xl gap-5 p-4 border shadow-lg max-w-[360px] min-w-[350px] h-[80px] bg-white cursor-pointer"

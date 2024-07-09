@@ -11,12 +11,12 @@ const Surah = () => {
     data: surahData,
     loading,
     error,
-  } = useFetchQuranData("https://deen.somee.com/api/App/GetAllQuran");
+  } = useFetchQuranData("http://quranapp.somee.com/api/App/GetAllQuran");
   const [currentPage, setCurrentPage] = useState(1);
   const [showVideo, setShowVideo] = useState(null);
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
   const itemsPerPage = 18;
-  const saveUrl = "https://deen.somee.com/api/App/AddQuranToArchive";
+  const saveUrl = "http://quranapp.somee.com/api/App/AddQuranToArchive";
   const removeDiacritics = (text) => {
     return text.normalize("NFD").replace(/[\u064B-\u0652\u0670\u0640]/g, ""); // Remove Arabic diacritics
   };

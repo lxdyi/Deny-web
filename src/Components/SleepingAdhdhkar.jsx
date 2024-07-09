@@ -7,11 +7,11 @@ const SleepingAdhdhkar = () => {
     loading,
     error,
   } = useFetchQuranData(
-    "https://deen.somee.com/api/Dashboard/GetAllAthkarSleeping"
+    "http://quranapp.somee.com/api/Dashboard/GetAllAthkarSleeping"
   );
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   console.log(adhdhkarData)
-  const videoBaseUrl = "https://deen.somee.com/files/";
+  const videoBaseUrl = "http://quranapp.somee.com/files/";
 
   const handlePrevious = () => {
     setCurrentImageIndex((prevIndex) =>

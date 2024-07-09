@@ -10,7 +10,7 @@ const VideoPlayer = ({
   currentVideoIndex,
   setCurrentVideoIndex,
 }) => {
-  const videoBaseUrl = "https://deen.somee.com/files/";
+  const videoBaseUrl = "http://quranapp.somee.com/files/";
   const [playing, setPlaying] = useState(false);
   const [loop, setLoop] = useState(false);
   const videoRef = useRef(null);

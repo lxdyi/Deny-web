@@ -1,10 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
+import  { useContext, useEffect, useState } from "react";
 import { AppContext } from "../Context/AppContext";
 import MorningAdhdhkar from "../Components/MoringAdhdhkar";
 import EveningAdhdhkar from "../Components/EveningAdhdhkar";
 import SleepingAdhdhkar from "../Components/SleepingAdhdhkar";
 
-const apiUrl = "https://deen.somee.com/api/App/GetAllSavedAthkar";
+const apiUrl = "http://quranapp.somee.com/api/App/GetAllSavedAthkar";
 
 const MahfuzatAdhdkar = () => {
   const { userId } = useContext(AppContext);

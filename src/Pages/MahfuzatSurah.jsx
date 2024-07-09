@@ -3,7 +3,7 @@ import axios from "axios";
 import VideoPlayer from "../Components/VideoPlayer";
 import { AppContext } from "../Context/AppContext";
 import CircularProgress from "@mui/material/CircularProgress";
-const url = `https://deen.somee.com/api/App/GetAllSavedQuran`;
+const url = `http://quranapp.somee.com/api/App/GetAllSavedQuran`;
 
 const MahfuzatSurah = () => {
   const [surahData, setSurahData] = useState([]);
