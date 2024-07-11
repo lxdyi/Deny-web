@@ -41,6 +41,7 @@ const SaveIcon = ({ surahId, apiUrl }) => {
   return (
     <Checkbox
       sx={{
+        fontSize:"15px",
         color: "default",
         "&.Mui-checked": {
           color: "#03AA77",
@@ -49,7 +50,7 @@ const SaveIcon = ({ surahId, apiUrl }) => {
       {...label}
       icon={<BookmarkBorderIcon />}
       checkedIcon={<BookmarkIcon />}
-      size="small"
+      size="24px"
       onChange={handleSave}
       onClick={handleClick}
       checked={isChecked}

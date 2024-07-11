@@ -82,17 +82,13 @@ const Surah = () => {
               </span>
             </div>
             <div className="flex flex-col flex-grow relative">
-              <div className="flex justify-between items-center font-bold mb-2">
-                <h2 className="text-gray-900 text-lg">Al-Fātiḥah</h2>
-                <div className="absolute right-24">
-                  <SaveIcon surahId={surah.id} apiUrl={saveUrl} />
-                </div>
+              <div className="flex justify-end items-center font-bold mb-2">
                 <h2 className="text-[#03AA77] font-bold text-lg">
                   {surah.name}
                 </h2>
               </div>
               <div className="flex gap-2">
-                <div className="bg-gray-200 py-1 px-2 rounded-lg flex items-center gap-3">
+                <div className="bg-gray-200  px-2 rounded-lg flex items-center gap-3">
                   <img
                     src="/src/assets/kab.png"
                     alt="icon"
@@ -102,7 +98,7 @@ const Surah = () => {
                     {surah.type === "Makiya" ? "مكية" : "مدنية"}
                   </p>
                 </div>
-                <div className="bg-gray-200 py-1 px-2 rounded-lg flex items-center gap-2">
+                <div className="bg-gray-200  px-2 rounded-lg flex items-center gap-2">
                   <img
                     src="/src/assets/book.png"
                     alt="icon"
@@ -111,6 +107,9 @@ const Surah = () => {
                   <p dir="rtl" className="text-gray-700 text-sm">
                     {surah.ayatNum}
                   </p>
+                </div>
+                <div className="bg-gray-200  px-1 rounded-lg flex items-center gap-2">
+                  <SaveIcon  surahId={surah.id} apiUrl={saveUrl} />
                 </div>
               </div>
             </div>

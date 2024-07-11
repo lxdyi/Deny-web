@@ -82,23 +82,12 @@ const MahfuzatSurah = () => {
               </span>
             </div>
             <div className="flex flex-col flex-grow">
-              <div className="flex justify-between font-bold mb-2">
-                <h2 className="text-gray-900 text-lg">Al-Fātiḥah</h2>
+              <div className="flex justify-end font-bold mb-2">
                 <h2 className="text-[#03AA77] font-bold text-lg">
                   {surah.name}
                 </h2>
               </div>
               <div className="flex gap-2">
-                <div className="bg-gray-200 py-1 px-1 rounded-lg flex items-center gap-2">
-                  <img
-                    src="/src/assets/video.png"
-                    alt="icon"
-                    className="w-4 h-4"
-                  />
-                  <p dir="rtl" className="text-gray-700 text-sm">
-                    3 دقائق
-                  </p>
-                </div>
                 <div className="bg-gray-200 py-1 px-1 rounded-lg flex items-center gap-2">
                   <img
                     src="/src/assets/kab.png"
